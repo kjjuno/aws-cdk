@@ -163,6 +163,11 @@ export interface RestApiProps extends ResourceOptions {
    * @default - when no export name is given, output will be created without export
    */
   readonly endpointExportName?: string;
+  
+  /**
+   * An open api spec
+   */
+  readonly body?: any;
 }
 
 /**
@@ -231,7 +236,8 @@ export class RestApi extends Resource implements IRestApi {
       endpointConfiguration: props.endpointTypes ? { types: props.endpointTypes } : undefined,
       apiKeySourceType: props.apiKeySourceType,
       cloneFrom: props.cloneFrom ? props.cloneFrom.restApiId : undefined,
-      parameters: props.parameters
+      parameters: props.parameters,
+      body: props.body
     });
     this.node.defaultChild = resource;
 
